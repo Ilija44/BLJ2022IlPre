@@ -11,11 +11,12 @@ int main() {
     int deleteOpt = 0;
     int arr[FIELD_LENGTH][FIELD_LENGTH] = {{0}};
 
-    while(1) {
+
+    while (1) {
 
 
         printf("\nHerzlich willkomen zu meinem Programm zu zweidimensionalen Arrays");
-        printf("\n---------5---------------------------------------------------------");
+        printf("\n------------------------------------------------------------------");
         printf("\nGeben Sie die Position der Zeile in Ihrem Array ein (0-4):");
         scanf("%d", &userX);
         printf("\nGeben Sie die Position der Spalte in Ihrem Array ein (0-4):");
@@ -23,9 +24,17 @@ int main() {
         printf("\nGeben Sie die Zahl ein die Sie einsetzen wollen:");
         scanf("%d", &userNum);
 
+
         if (arr[userX][userY] == 0) {
             arr[userX][userY] = userNum;
+        } else {
+            printf("Wollen Sie die Zahl ueberschreiben (1/0): ");
+            scanf("%d", &deleteOpt);
+            if(deleteOpt == 1){
+                arr[userX][userY] = userNum;
+            }
         }
+
 
         for (int i = 0; i < FIELD_LENGTH; i++) {
             for (int j = 0; j < FIELD_LENGTH; j++) {
@@ -33,20 +42,20 @@ int main() {
             }
             printf("\n");
         }
-        printf("Willst du eine gespeicherte Zahl in der Array loeschen (1/0): ");
+        printf("Willst du eine gespeicherte Zahl in der Array loeschen  (1/0): ");
         scanf("%d", &deleteOpt);
 
-        if(deleteOpt == 1){
+        if (deleteOpt == 1) {
 
             printf("\nGeben Sie die Position der Zeile in Ihrem Array ein:");
             scanf("%d", &userX);
             printf("\nGeben Sie die Position der Spalte in Ihrem Array ein:");
             scanf("%d", &userY);
-
             arr[userX][userY] = 0;
         }
 
+
     }
-        return 0;
+    return 0;
 
 }
