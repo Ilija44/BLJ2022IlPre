@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-
-
 <head>
   <meta charset="utf-8">
   <title>Probezeitbericht</title>
 <h4>Probezeitbericht</h4>
+<br>
 </head>
-
-<label for="fname">Lernende/r:</label>
-<input type="text" id="fname" name="fname"><br><br>
-<label for="fname">Lehrberuf:</label>
+<form>
+<label for="name">Lernende/r:</label>
+<input type="text" id="fname" name="fname"><br>
+<label for="name">Lehrberuf:</label>
 <label for="Lehrberuf"></label>
   <select name="Lehrberuf" id="Lehrberuf">
     <option value="Applikationsentwickler/In">Applikationsentwickler/In</option>
@@ -20,6 +18,116 @@
     <option value="Mediamatiker/In">Mediamatiker/In</option>
     <option value="Kauffrau/Kaufmann">Kauffrau/Kaufmann</option>
   </select>
-  <br><br>
+  </form>
+  <form method="post" action="/Tests/Post" onsubmit="return ValidateForm();">
+    <fieldset>
+    <legend>Berufsmaturit&auml;t</legend>
+  <div> <code class="hljs xml"><input type="radio" name="nameOfChoice" value="1"></code> mit BMS 
+  </code> <code class="hljs xml"><input type="radio" name="nameOfChoice" value="1"></code> ohne BMS</div> </fieldset>
+  <label>
+  Lehrbeginn: 
+  <input type="date" id="Lehrbeginn">
+ <br> <label for="name">Berufsbildner/in:</label>
+<input type="text" id="fname" name="fname"><br>
+<br> <h4>Gesamteindruck</h4>
+<textarea id="w3review" name="w3review" rows="5" cols="26">   </textarea>
+  <br> <h4>Beurteilung</h4> 
+  <hr>
+ <div>Fachkompetenzen</div>
+ <div><font size="2em">Fertigkeiten, Kenntnisse, Quantit&auml;t, Qualit&auml;t etc.</div></font>
+ <form action="/action_page.php">
+  <input type="checkbox" id="Bewertungewerutungwertung">
+  <label for="vehicle1">sehr gut</label>
+ <br>
+ <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">gut</label>
+  <br>
+  <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">gen&uuml;gend</label>
+  <br>
+  <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">ungen&uuml;gend</label>
+<hr>
+<div>Methodenkompetenzen</div>
+<div> <font size="2em">Lernf&auml;higkeit, Arbeitsmethodik, Arbeitssicherheit, Kreativit&auml;t etc.</div> </font>
+<form action="/action_page.php">
+  <input type="checkbox" id="Bewertungewerutungwertung">
+  <label for="vehicle1">sehr gut</label>
+ <br>
+ <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">gut</label>
+  <br>
+  <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">&uuml;gend</label>
+  <br>
+  <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">ungen&uuml;gend</label>
+ <hr>
+<div>Sozialkompetenz</div>
+<div> <font size="2em">Teamf&auml;higkeit, Firmenbezug, umweltgerechtes Verhalten etc. etc.</div></font>
+<form action="/action_page.php">
+  <input type="checkbox" id="Bewertungewerutungwertung">
+  <label for="vehicle1">sehr gut</label>
+ <br>
+ <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">gut</label>
+  <br>
+  <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">gen&uuml;gend</label>
+  <br>
+  <form action="/action_page.php">
+ <input type="checkbox"
+ id="Bewertungewerutungwertung">
+  <label for="Bewertung">ungen&uuml;gend</label>
+  <hr>
+  <div>Selbstkompetenz</div>
+  <div> <font size="2em">Selbst&auml;ndigkeit, Leistungsbereitschaft, Flexibilit&auml;t etc.</div></font>
+  <form action="/action_page.php">
+    <input type="checkbox" id="Bewertungewerutungwertung">
+    <label for="vehicle1">sehr gut</label>
+   <br>
+   <form action="/action_page.php">
+   <input type="checkbox"
+   id="Bewertungewerutungwertung">
+    <label for="Bewertung">gut</label>
+    <br>
+    <form action="/action_page.php">
+   <input type="checkbox"
+   id="Bewertungewerutungwertung">
+    <label for="Bewertung">gen&uuml;gend</label>
+    <br>
+    <form action="/action_page.php">
+   <input type="checkbox"
+   id="Bewertungewerutungwertung">
+    <label for="Bewertung">ungen&uuml;gend</label>
+    <hr>
+    <h4>Fazit</h4>
+      <label>Probezeit:
+        <select>
+          <option>bestanden</option>
+          <option>verl&auml;ngert</option>
+          <option>nicht bestanden</option>
+        </select>
+      </label>
+    <h4>Bemerkungen</h4>
+    <textarea id="w3review" name="w3review" rows="5" cols="26">   </textarea>
+   <div><input value="speichern" type="submit"></input> </div> 
+
 </body>
 </html>
