@@ -17,13 +17,10 @@ int main() {
 }
 
 char makeUppercase(char *p_c) {
-    if (96<*p_c && *p_c < 123) {
+    if (96 < *p_c && *p_c < 123) {
         *p_c -= 32;
     } else {
         printf("Not a valid argument\n");
     }
+    return 0;
 }
-
-
-
-
