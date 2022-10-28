@@ -3,4 +3,4 @@ project(struct C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(struct main.c)
+add_executable(struct main.c struct.c)
