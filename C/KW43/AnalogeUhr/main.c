@@ -18,7 +18,7 @@ int main() {
         printf("Enter the minutes:");
         scanf("%d", &userInput);
 
-        if (userInput > 60 && userInput < 0) {
+        if (userInput > 60 || userInput < 0) {
             printf("invalid number\n");
             rep = 0;
         }
