@@ -24,7 +24,7 @@ int main() {
         }
     } while (rep == 0);
 
-    if (userInput >= 5 && userInput <= 10) {
+    if (userInput >= 3 && userInput <= 10) {
         for (int i = 0; i < 6; i++) {
             field[middle - i][middle + i] = 1;   //zeigt in rechten oberen ecken
         }
