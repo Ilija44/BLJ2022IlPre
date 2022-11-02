@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int getRandomNums(int n);
+int getRandomNums(int i);
 
 int main() {
 
@@ -24,16 +24,20 @@ int main() {
     return 0;
 }
 
-int getRandomNums(int answer) {
+int getRandomNums(int i) {
 
     srand(time(NULL));
 
-    int *nums = malloc(answer * sizeof(int));
+    int *nums = malloc(i * sizeof(int));
 
-    if (nums == NULL) exit(1);
+    if (nums == NULL) {
+        exit(1);
+    }
+    for (int n = 0; n < i; n++) {
+        int RandNums = rand() % 100 + 1;
+        *(nums + 1) = RandNums;
+        printf("%d   ", *(nums + 1));
 
-    for (int n = 0; n < answer; n++) {
-        printf("%d   ", rand() % 100 + 1);
     }
     return nums;
 }
