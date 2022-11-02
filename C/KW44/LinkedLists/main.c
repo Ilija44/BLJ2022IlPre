@@ -3,8 +3,8 @@
 #include "linkedlist.h"
 
 
-
 int main() {
-
-    return 0;
+    int *head = StartNodes();
+    printList(head);
+    return (0);
 }

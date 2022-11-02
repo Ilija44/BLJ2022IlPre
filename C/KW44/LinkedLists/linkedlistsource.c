@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Node {
+typedef struct Node{
     int data;
-    struct Node* next;
+    struct Node *next;
 } TNode;
 
 int *StartNodes() {
@@ -13,8 +13,8 @@ int *StartNodes() {
     struct Node *third = NULL;
 
     head = (struct Node *) malloc(sizeof(struct Node));
-    second = (struct node *) malloc(sizeof(struct Node));
-    third = (struct node *) malloc(sizeof(struct Node));
+    second = (struct Node *) malloc(sizeof(struct Node));
+    third = (struct Node *) malloc(sizeof(struct Node));
 
     head->data = 1;
     head->next = second;
@@ -22,16 +22,15 @@ int *StartNodes() {
     second->data = 2;
     second->next = third;
 
-    third->data = 4;
+    third->data = 3;
     third->next = NULL;
 
     return head;
 }
 
-    void printList(struct Node* head)
-    {
-        while (head != 0) {
-            printf(" %d ", head->data);
-            head = head->next;
-        }
+void printList(struct Node *head) {
+    while (head != NULL) {
+        printf(" %d ", head->data);
+        head = head->next;
     }
+}
