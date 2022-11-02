@@ -1,0 +1,5 @@
+
+#ifndef LINKEDLISTS_LINKEDLIST_H
+#define LINKEDLISTS_LINKEDLIST_H
+
+#endif
