@@ -6,7 +6,7 @@ typedef struct Node {
     struct Node* next;
 } TNode;
 
-void main() {
+int *StartNodes() {
 
     struct Node *head = NULL;
     struct Node *second = NULL;
@@ -16,6 +16,22 @@ void main() {
     second = (struct node *) malloc(sizeof(struct Node));
     third = (struct node *) malloc(sizeof(struct Node));
 
-    
+    head->data = 1;
+    head->next = second;
 
+    second->data = 2;
+    second->next = third;
+
+    third->data = 4;
+    third->next = NULL;
+
+    return head;
 }
+
+    void printList(struct Node* head)
+    {
+        while (head != 0) {
+            printf(" %d ", head->data);
+            head = head->next;
+        }
+    }
