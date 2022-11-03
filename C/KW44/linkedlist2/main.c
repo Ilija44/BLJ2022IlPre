@@ -4,9 +4,12 @@
 
 
 int main() {
-    (TNode *) malloc(sizeof(TNode));
-    int *head = StartNodes();
+    TNode *head = NULL;
+    head = (TNode *) malloc(sizeof(TNode));
+
+
     printList(head);
+
     addNode(11, head);
 
 
