@@ -13,8 +13,8 @@ int main() {
         fflush(stdin);
         scanf("%d", &answer);
 
-        if (answer < 1 || answer > 1000) {
-            printf("Enter please a number between 1-1000 \n");
+        if (answer < 1 || answer > 10000) {
+            printf("Enter please a number between 1-10000 \n");
         }
 
     } while (answer < 1 || answer > 10000);
