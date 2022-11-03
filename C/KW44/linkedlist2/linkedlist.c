@@ -5,6 +5,7 @@ typedef struct Node{
     int data;
     struct Node *next;
 } TNode;
+struct Node *head, *tail = NULL;
 
 int *StartNodes() {
 
@@ -33,4 +34,23 @@ void printList(struct Node *n) {
         printf(" %d ", n->data);
         n = n->next;
     }
+}
+
+
+ void addnode(int data, struct Node *head){
+struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+newNode->data = data;
+newNode->next = NULL;
+
+if(head == NULL){
+    head = newNode;
+    tail = newNode;
+}
+else{
+    while(head->next != NULL)
+    {
+        head = head->next;
+    }
+    head->next = newNode;
+}
 }
