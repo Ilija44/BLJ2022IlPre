@@ -7,10 +7,14 @@ int main() {
     TNode *head = NULL;
     head = (TNode *) malloc(sizeof(TNode));
 
+    head->data = 5;
+    head->next = (struct node *) malloc(sizeof(struct node));
+    head->next = NULL;
 
-    printList(head);
 
     addNode(11, head);
+    addNode(69, head);
+    printList(head);
 
 
     return (0);
