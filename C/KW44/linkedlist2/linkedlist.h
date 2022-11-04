@@ -10,6 +10,6 @@ void printList(TNode *head);
 
 void addNode(int data, struct node *head);
 void appendNode(int data, struct node **head);
-void delete (int pos);
+void delete (int pos, TNode *temp);
 
 #endif MAIN_C_LINKEDLIST_H

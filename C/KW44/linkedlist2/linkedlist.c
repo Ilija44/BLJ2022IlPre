@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include "linkedlist.h"
 
-struct node *head, *tail = NULL;
-
+//struct node *head, *tail = NULL;
+struct node *tail = NULL;
 
 void printList(TNode *head) {
     TNode *current_node = head;
@@ -45,27 +45,19 @@ void appendNode(int data, struct node **head) {
     }
 }
 
-void delete(int pos) {
+void delete(int pos, TNode *head) {
     struct node *temp = head;
     int i;
-    if (pos == 0) {
-        printf("\nElement deleted is : %d\n", temp->data);
-        head = head->next;
-        temp->next = NULL;
-        free(temp);
-    } else {
         for (i = 0; i < pos - 1; i++) {
             temp = temp->next;
         }
         struct node *del
                 = temp->next;
         temp->next = temp->next->next;
-        printf("\nElement deleted is : %d\n", del->data);
         del->next = NULL;
         free(del);
-    }
-    printf("\nUpdated Linked List is : \n");
-    return;
+
+
 }
 
 

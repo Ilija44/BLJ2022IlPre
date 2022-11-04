@@ -15,8 +15,8 @@ int main() {
     addNode(11, head);
     addNode(69, head);
     addNode(111, head);
-    appendNode(123, &head);
-
+    appendNode(21, &head);
+    delete(1,head);
     printList(head);
 
 
