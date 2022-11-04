@@ -98,4 +98,13 @@ void changeAllNodes(TNode *p_head){
     }
 
 }
+void nodeCount(TNode *p_head){
+    struct node* counter = p_head;
+    int count = 0;
+    while(counter != NULL){
+        counter = counter->next;
+        count++;
+    }
+    printf("Total quantity of nodes is %d",count);
+}
 
