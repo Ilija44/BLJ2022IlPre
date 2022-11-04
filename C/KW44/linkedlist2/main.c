@@ -14,9 +14,11 @@ int main() {
     addNode(69, head);
     addNode(111, head);
     appendNode(21, &head);
-   // delete(4,head);
+    delete(4,head);
     AddIndex(1, head);
+    //changeAllNodes(head);
     printList(head);
+    nodeCount(head);
 
 
     return (0);

@@ -12,5 +12,7 @@ void addNode(int data, struct node *head);
 void appendNode(int data, struct node **head);
 void delete (int pos, TNode *temp);
 void AddIndex(int pos, struct node *head);
+void changeAllNodes(TNode *p_head);
+void nodeCount(TNode *p_head);
 
 #endif MAIN_C_LINKEDLIST_H

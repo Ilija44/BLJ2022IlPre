@@ -66,23 +66,36 @@ void AddIndex(int pos, struct node *head) {
 
     TNode *head2 = head;
 
-    while (i != pos){
+    while (i != pos) {
         head = head->next;
         i++;
     }
-    while(k - 1 != pos){
+    while (k - 1 != pos) {
         head2 = head2->next;
         k++;
     }
-        struct node *newnodeindex = (struct node *) malloc(sizeof(struct node));
+    struct node *newnodeindex = (struct node *) malloc(sizeof(struct node));
 
     newnodeindex->data = 1000;
 
- head->next = newnodeindex;
- newnodeindex->next = head2;
-
+    head->next = newnodeindex;
+    newnodeindex->next = head2;
 
 
 }
 
+void changeAllNodes(TNode *p_head){
+    struct node *newNode = malloc(sizeof(struct node));
+    newNode->next = NULL;
+
+    struct node *lastNode = p_head;
+    while(lastNode->next != NULL){
+        lastNode->data = 3;
+
+        lastNode = lastNode->next;
+        lastNode->data = 3;
+
+    }
+
+}
 
