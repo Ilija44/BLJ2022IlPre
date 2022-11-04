@@ -48,14 +48,39 @@ void appendNode(int data, struct node **head) {
 void delete(int pos, TNode *head) {
     struct node *temp = head;
     int i;
-        for (i = 0; i < pos - 1; i++) {
-            temp = temp->next;
-        }
-        struct node *del
-                = temp->next;
-        temp->next = temp->next->next;
-        del->next = NULL;
-        free(del);
+    for (i = 0; i < pos - 1; i++) {
+        temp = temp->next;
+    }
+    struct node *del
+            = temp->next;
+    temp->next = temp->next->next;
+    del->next = NULL;
+    free(del);
+
+}
+
+void AddIndex(int pos, struct node *head) {
+
+    int i = 0;
+    int k = 0;
+
+    TNode *head2 = head;
+
+    while (i != pos){
+        head = head->next;
+        i++;
+    }
+    while(k - 1 != pos){
+        head2 = head2->next;
+        k++;
+    }
+        struct node *newnodeindex = (struct node *) malloc(sizeof(struct node));
+
+    newnodeindex->data = 1000;
+
+ head->next = newnodeindex;
+ newnodeindex->next = head2;
+
 
 
 }
