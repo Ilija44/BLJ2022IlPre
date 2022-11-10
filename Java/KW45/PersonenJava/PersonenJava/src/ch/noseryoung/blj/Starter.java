@@ -14,10 +14,10 @@ public class Starter {
 
         for (int i = 0; i < max_person; i++) {
 
-            System.out.println("enter your friends name: ");
+            System.out.println("enter your name: ");
             Scanner myObj = new Scanner(System.in);
             String Name2 = myObj.nextLine();
-            System.out.println("enter your friends surname: ");
+            System.out.println("enter your surname: ");
             String surname2 = myObj.nextLine();
             System.out.println("enter your age: ");
             int age2 = myObj.nextInt();
