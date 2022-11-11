@@ -9,7 +9,7 @@ public class BackpackGame {
         Scanner scan = new Scanner(System.in);
 
         ArrayList<String> inputs = new ArrayList<String>();
-        System.out.println("Enter x to quit:");
+        System.out.println("Enter 0 to quit");
         System.out.println("Enter the object you want to add to the Backpack:");
         String item;
 
@@ -20,8 +20,8 @@ public class BackpackGame {
             inputs.add(item);
             System.out.println("You take with:\n");
 
-            for (int i = 0; i < inputs.size(); i++) {
-                System.out.println("-" + inputs.get(i));
+            for (String input : inputs) {
+                System.out.println("-" + input);
             }
 
 
