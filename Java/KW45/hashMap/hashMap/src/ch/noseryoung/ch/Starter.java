@@ -1,17 +1,13 @@
 package ch.noseryoung.ch;
 
-import com.sun.java.accessibility.util.Translator;
-
-import java.io.CharArrayWriter;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Starter {
 
 
     public static void main(String[] args) {
         translator translator2 = new translator();
-        String Input = ("Ich bin Noah");
+        String Input = ("Hallo, wie gehts?");
         String temp;
         char[] CharrArray = Input.toCharArray();
 
@@ -21,4 +17,5 @@ public class Starter {
             System.out.print(translator2.getMorseTable().get(temp));
         }
     }
+
 }

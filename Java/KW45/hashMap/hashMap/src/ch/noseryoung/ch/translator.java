@@ -1,9 +1,9 @@
 package ch.noseryoung.ch;
 
 import java.util.HashMap;
+import java.util.Scanner;
 public class translator {
-    public HashMap<String, String> morseTable = new HashMap<String, String>();
-
+    public HashMap<String, String> morseTable = new HashMap<>();
     public translator() {
         morseTable.put("a", ".-");
         morseTable.put("b", "-...");
@@ -30,6 +30,11 @@ public class translator {
         morseTable.put("x", "-..-");
         morseTable.put("y", "-.--");
         morseTable.put("z", "--..");
+        morseTable.put(".", ".-.-.-");
+        morseTable.put("?", "..--..");
+        morseTable.put(",", "--..--");
+        morseTable.put(" ", "/");
+
     }
 
     public HashMap<String, String> getMorseTable() {
