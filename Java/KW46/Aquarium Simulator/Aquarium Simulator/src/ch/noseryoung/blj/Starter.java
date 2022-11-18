@@ -1,13 +1,15 @@
 package ch.noseryoung.blj;
+
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
+
+import static ch.noseryoung.blj.Aquarium.deleteFish;
+import static ch.noseryoung.blj.Fish.moveFish;
 
 public class Starter {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Fish> fish = new ArrayList<Fish>();
-        boolean cont;
         Aquarium myAquarium;
         int menu;
 
@@ -20,7 +22,6 @@ public class Starter {
         createFish(fish, myAquarium);
 
         do {
-
             System.out.println("1: create a fish");
             System.out.println("2: remove a fish");
             System.out.println("3: move a fish");
@@ -39,11 +40,9 @@ public class Starter {
         } while (menu != 5);
     }
 
-
-    public static ArrayList<Fish> createFish(ArrayList<Fish> fish, Aquarium myAquarium) {
+    public static void createFish(ArrayList<Fish> fish, Aquarium myAquarium) {
         boolean cont;
 
-        boolean validInput;
         String name = null;
         int x = 0;
         int y = 0;
@@ -74,53 +73,6 @@ public class Starter {
             cont = yn.equalsIgnoreCase("y");
 
         } while (cont);
-        return fish;
     }
 
-    public static ArrayList<Fish> deleteFish(ArrayList<Fish> fish, Aquarium myAquarium) {
-        Scanner sc = new Scanner(System.in);
-        for (Fish bsp : fish) {
-            System.out.println(bsp.getName());
-        }
-        System.out.println("Which fish should die?");
-        String name = sc.nextLine();
-        fish.remove(name);
-        for (Fish bsp : fish) {
-            String bspname = bsp.getName();
-            if (Objects.equals(bspname, name)) {
-                myAquarium.removeCords(bsp);
-            }
-        }
-
-        return fish;
-    }
-
-    public static ArrayList<Fish> moveFish(ArrayList<Fish> fish, Aquarium myAquarium) {
-        Scanner sc = new Scanner(System.in);
-        int done = 0;
-        for (Fish bsp : fish) {
-            System.out.println(bsp.getName());
-        }
-        System.out.println("Which fish should get moved?");
-        do {
-            String name = sc.nextLine();
-            for (Fish bsp : fish) {
-                String bspname = bsp.getName();
-                if (Objects.equals(bspname, name)) {
-                    myAquarium.removeCords(bsp);
-                    System.out.println("x coordinate?");
-                    int x = sc.nextInt();
-                    System.out.println("y coordinate?");
-                    int y = sc.nextInt();
-                    bsp.setField_x(x);
-                    bsp.setField_y(y);
-                    myAquarium.addCords(bsp);
-                    done = 1;
-                    break;
-                }
-            }
-            System.out.println("not like this, try again");
-        } while (done != 1);
-        return fish;
-    }
 }
