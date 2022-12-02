@@ -7,9 +7,18 @@ public class Geburtstagskalender {
 
         Person[] persArr = new Person[40];
         initPersonArray(persArr);
-        System.out.println();
-    }
+        System.out.println("2022 haben Geburtstag im");
+        for (int i = 0; i < persArr.length; i++) {
+            for (int j = 0; j < persArr.length; j++) {
+                int temp = persArr[j].getBirthMonth();
+                if (temp == i + 1) {
+                    System.out.println(persArr[j].getBirthMonth());
+                    System.out.println(persArr[j].getBirthDay() + ". " + persArr[j].getName());
+                }
+            }
+        }
 
+    }
 
     public static void initPersonArray(Person[] persArr) {
         int i = 0;
