@@ -1,14 +1,15 @@
 package ch.noseryoung.ch;
 
-import java.util.ArrayList;
-
 public class Geburtstagskalender {
+
+
     public static void main(String[] args) {
 
-
-        Person[] persArr = new Person[52];
+        Person[] persArr = new Person[40];
         initPersonArray(persArr);
+        System.out.println();
     }
+
 
     public static void initPersonArray(Person[] persArr) {
         int i = 0;
