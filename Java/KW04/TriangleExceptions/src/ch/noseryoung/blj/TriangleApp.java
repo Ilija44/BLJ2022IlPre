@@ -146,7 +146,6 @@ public class TriangleApp {
         }
     }
 
-
     /**
      * This method determines whether the three entered values lead to a
      * equilateral, isosceles, right-angled or scalene triangle.
