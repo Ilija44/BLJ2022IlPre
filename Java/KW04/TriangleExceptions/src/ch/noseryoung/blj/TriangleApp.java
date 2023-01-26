@@ -1,6 +1,5 @@
 package ch.noseryoung.blj;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 import ch.noseryoung.exceptions.*;
@@ -8,6 +7,7 @@ import ch.noseryoung.exceptions.*;
 
 public class TriangleApp {
 
+    Scanner sides = new Scanner(System.in);
     private String company;
     private String handler;
     private boolean isRunning;
@@ -31,7 +31,7 @@ public class TriangleApp {
     public TriangleApp(String company, String handler) {
         this.company = company;
         this.handler = handler;
-        isRunning = true;
+        this.isRunning = true;
     }
 
     /**
@@ -41,26 +41,26 @@ public class TriangleApp {
     public void start() {
         printHeader();
         while (isRunning) {
-            Scanner sides = new Scanner(System.in);
+
             System.out.println("\nTEST CASES TRIANGLE\n");
 
             System.out.println("Seite A: ");
-            String sideA = sides.nextLine();
+            sideAInput = sides.nextLine();
 
             System.out.println("Seite B: ");
-            String sideB = sides.nextLine();
+            sideBInput = sides.nextLine();
 
-            System.out.println("Seite C");
-            String sideC = sides.nextLine();
+            System.out.println("Seite C ");
+            sideCInput = sides.nextLine();
 
             try {
-                // validate Input (might throw exception)
-                // get triangle code and write it to field code
+                validateInput();
+                code = determineTriangleType();
             } catch (TriangleException e) {
-                // get error code from exception and write it to field code
+                code = e.getMessage();
             } finally {
-                // print result
-                // ask user for next step
+                printResult();
+                promptAction();
             }
         }
     }
@@ -82,7 +82,7 @@ public class TriangleApp {
      */
     private void printResult() {
         System.out.println("----------------------");
-        System.out.println("CODE:                 ");
+        System.out.println("CODE: " + code);
         System.out.println("----------------------");
     }
 
@@ -93,7 +93,7 @@ public class TriangleApp {
      * @return the input of type String.
      */
     private String promptSide(String side) {
-
+        return "";
     }
 
     /**
@@ -104,9 +104,17 @@ public class TriangleApp {
      */
     private void promptAction() {
         String action = "";
-        // get valid prompt
-        // check if program needs to be cancelled
+        System.out.println("<q> quit");
+        System.out.println("<c> continue");
+        action = sides.nextLine();
 
+        if (action.equals("q")) {
+            isRunning = false;
+        } else if (action.equals("c")) {
+            start();
+        }else {
+            promptAction();
+        }
         System.out.println("******************************");
     }
 
@@ -114,6 +122,7 @@ public class TriangleApp {
      * This method validates the three entered values, to be used as sides for a
      * triangle.
      *
+     * @return
      * @throws TriangleException if the validation fails. This means that the
      *                           entered values do not lead to a triangle.
      */
@@ -125,34 +134,42 @@ public class TriangleApp {
         } catch (NumberFormatException e) {
             throw new IllegalTriangleSideException();
         }
-        {
-            if (sideA == 0 || sideB == 0 || sideC == 0) {
-                throw new ZeroTriangleSideException();
-            } else if (sideA < 0 || sideB < 0 || sideC < 0) {
-                throw new NegativeTriangleSideException();
-            } else if (sideA + sideB == sideC) {
-                throw new TriangleIsLineException();
-            } else if (sideA + sideB < sideC) {
-                throw new ImpossibleTriangleException();
-            }
-        }
 
-        /**
-         * This method determines whether the three entered values lead to a
-         * equilateral, isosceles, right-angled or scalene triangle.
-         *
-         * @return The corresponding code for each triangle.
-         */
-        private String determineTriangleType; () {
-            if (sideA + sideB > sideA) {
-                code = ("TRI84TF");
-            } else if (sideA * sideA + sideB * sideB == sideC * sideC) {
-                code = ("TRI72TF");
-            } else if (sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA) {
-                code = ("TRI60TF");
-            } else if (sideA == sideB && sideB == sideC) {
-                code = ("TRI66TF");
-            }
+        if (sideA == 0 || sideB == 0 || sideC == 0) {
+            throw new ZeroTriangleSideException();
+        } else if (sideA < 0 || sideB < 0 || sideC < 0) {
+            throw new NegativeTriangleSideException();
+        } else if (sideA + sideB == sideC) {
+            throw new TriangleIsLineException();
+        } else if (sideA + sideB < sideC) {
+            throw new ImpossibleTriangleException();
         }
     }
+
+
+    /**
+     * This method determines whether the three entered values lead to a
+     * equilateral, isosceles, right-angled or scalene triangle.
+     *
+     * @return The corresponding code for each triangle.
+     */
+    private String determineTriangleType() {
+
+        double a1 = sideA * sideA;
+        double b1 = sideB * sideB;
+        double c1 = sideC * sideC;
+
+        if (sideA == sideB && sideA != sideC && sideB != sideC) {
+            return "TRI84TF";
+        } else if (sideA * sideA + sideB * sideB == sideC * sideC) {
+            return "TRI72TF";
+        } else if (sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA) {
+            return "TRI60TF";
+        } else if (sideA == sideB && sideB == sideC) {
+            return "TRI66TF";
+        } else {
+            return null;
+        }
+    }
+
 }
