@@ -2,6 +2,7 @@ package ch.noseryoung.blj;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+
 import ch.noseryoung.exceptions.*;
 
 
@@ -92,7 +93,7 @@ public class TriangleApp {
      * @return the input of type String.
      */
     private String promptSide(String side) {
-        // todo
+
     }
 
     /**
@@ -121,32 +122,37 @@ public class TriangleApp {
             sideA = Double.parseDouble(sideAInput);
             sideB = Double.parseDouble(sideBInput);
             sideC = Double.parseDouble(sideCInput);
-        } catch(NumberFormatException e){
-            throw new IllegalTriangleSideException(); }
+        } catch (NumberFormatException e) {
+            throw new IllegalTriangleSideException();
+        }
         {
-        if (sideA == 0 || sideB == 0 || sideC == 0) {
-            throw new ZeroTriangleSideException();
-        } else if (sideA < 0 || sideB < 0 || sideC < 0){
-            throw new NegativeTriangleSideException();
-        } else if (sideA + sideB == sideC){
-            throw new TriangleIsLineException();
-        } else if (sideA + sideB < sideC){
-            throw new ImpossibleTriangleException();
+            if (sideA == 0 || sideB == 0 || sideC == 0) {
+                throw new ZeroTriangleSideException();
+            } else if (sideA < 0 || sideB < 0 || sideC < 0) {
+                throw new NegativeTriangleSideException();
+            } else if (sideA + sideB == sideC) {
+                throw new TriangleIsLineException();
+            } else if (sideA + sideB < sideC) {
+                throw new ImpossibleTriangleException();
+            }
+        }
+
+        /**
+         * This method determines whether the three entered values lead to a
+         * equilateral, isosceles, right-angled or scalene triangle.
+         *
+         * @return The corresponding code for each triangle.
+         */
+        private String determineTriangleType; () {
+            if (sideA + sideB > sideA) {
+                code = ("TRI84TF");
+            } else if (sideA * sideA + sideB * sideB == sideC * sideC) {
+                code = ("TRI72TF");
+            } else if (sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA) {
+                code = ("TRI60TF");
+            } else if (sideA == sideB && sideB == sideC) {
+                code = ("TRI66TF");
+            }
         }
     }
-
-    /**
-     * This method determines whether the three entered values lead to a
-     * equilateral, isosceles, right-angled or scalene triangle.
-     *
-     * @return The corresponding code for each triangle.
-     */
-    private String determineTriangleType() {
-    if(sideA + sideB > sideA){
-        code = ("TRI84TF");
-    }else if(sideA * sideA + sideB * sideB == sideC * sideC){
-        code = ("TRI72TF");}else if ()
-    }
-    }
-}
 }
