@@ -1,6 +1,5 @@
 package ch.noseryoung.blj;
 
-import java.util.*;
 import java.io.*;
 
 public class Starter {

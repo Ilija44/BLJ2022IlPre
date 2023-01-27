@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class TextFileAnalyzer {
     public static void Analyzer(String filePath) {
@@ -27,6 +28,8 @@ public class TextFileAnalyzer {
                     }
                 }
             }
+            LocalDate currentDate = LocalDate.now();
+            System.out.println(currentDate + " " + "script.txt");
             System.out.println("**************************");
             System.out.println("TextFileAnalyzer in Java");
             System.out.println("**************************");

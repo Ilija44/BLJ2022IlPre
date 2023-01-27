@@ -1,14 +1,17 @@
 package ch.noseryoung.blj;
 
-import java.io.FileWriter;   // Import the FileWriter class
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.time.LocalDate;
 
 public class FileIOHandler {
 
     public void FileReader(int singleCount, int wordCount, String mostCommonWord, HashMap<String, Integer> wordCounts) {
         try {
             FileWriter myWriter = new FileWriter("result.txt");
+            LocalDate currentDate = LocalDate.now();
+            myWriter.write(String.valueOf(currentDate + " " + "script.txt" + "\n"));
             myWriter.write("************************** \n");
             myWriter.write("TextFileAnalyzer in Java \n");
             myWriter.write("************************** \n");
