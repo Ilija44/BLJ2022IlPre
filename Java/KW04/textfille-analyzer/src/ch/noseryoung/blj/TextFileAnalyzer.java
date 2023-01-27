@@ -3,15 +3,13 @@ package ch.noseryoung.blj;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class TextFileAnalyzer {
     public static void Analyzer(String filePath) {
-        ArrayList<String> wordList = new ArrayList<String>();
-        Set<String> wortZaehler = new HashSet<>();
+        int singleCount = 0;
+
         File file = new File(filePath);
         try {
             Scanner scan1 = new Scanner(file);
@@ -32,7 +30,6 @@ public class TextFileAnalyzer {
             System.out.println("**************************");
             System.out.println("TextFileAnalyzer in Java");
             System.out.println("**************************");
-            System.out.println("Total number of words: " + wordCount);
             String mostCommonWord = "";
             int maxCount = 0;
             for (String word : wordCounts.keySet()) {
@@ -40,10 +37,23 @@ public class TextFileAnalyzer {
                     maxCount = wordCounts.get(word);
                     mostCommonWord = word;
                 }
-                System.out.println( word + "            " + wordCounts.get(word));
             }
-            System.out.println("Most common word: " + mostCommonWord );
+            System.out.println("------------------------------");
+            System.out.println("Most common word: " + '\t' + mostCommonWord);
+            System.out.println("Total number of words: " + '\t' + wordCount);
+            for (String word : wordCounts.keySet()) {
+                if (wordCounts.get(word) == 1) {
+                    singleCount++;
+                }
+            }
+            System.out.println("Number of unique words: " + '\t' + singleCount);
+            System.out.println("------------------------------");
+            for (String word : wordCounts.keySet()) {
+                System.out.println(word + '\t' + '\t' + wordCounts.get(word));
+            }
             scan1.close();
+            FileIOHandler filereader = new FileIOHandler();
+            filereader.FileReader(singleCount, wordCount, mostCommonWord, wordCounts);
         } catch (FileNotFoundException e) {
             System.out.println("Die Datei konnte nicht gefunden werden.");
         }
