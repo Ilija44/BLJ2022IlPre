@@ -1,8 +1,9 @@
 package ch.noeryoung.blj;
 
-public class Main {
 
+public class Sum {
     public static void main(String[] args) {
-        System.out.println("Hallo Welt")
+        int x = "Hello World";
     }
 }
+

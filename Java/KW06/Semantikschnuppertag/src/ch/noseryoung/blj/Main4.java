@@ -1,10 +1,9 @@
 package ch.noseryoung.blj;
 
-public class Main {
+public class Main4 {
     public static void main(String[] args) {
-
         int x = 10;
-        double y = 20;
-        System.out.println(y);
+        x = x / 0;
     }
 }
+
