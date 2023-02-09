@@ -1,0 +1,6 @@
+department_id | AVG(salary) | department_name
+-----------------------------------------------
+1             | 5000        | Sales
+2             | 6000        | Marketing
+3             | 4500        | IT
+
