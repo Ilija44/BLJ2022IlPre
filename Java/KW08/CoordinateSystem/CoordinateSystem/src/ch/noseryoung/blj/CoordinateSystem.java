@@ -1,24 +1,33 @@
 package ch.noseryoung.blj;
 
-public class CoordinateSystem {
-    private int Coordinatesystemsize;
-    private CSPoint[] allPoints;
+import java.util.ArrayList;
 
-    public CoordinateSystem(int coordinatesystemsize, CSPoint[] point) {
-        if (coordinatesystemsize < 0 || coordinatesystemsize % 20 != 0) {
+public class CoordinateSystem {
+    private int CoordinateSystemSize;
+    private CSPoint[] allPoints;
+    private CSLineSegment[] allLinePoints;
+    private ArrayList<CSLineSegment> lines = new ArrayList<>();
+
+
+    public CoordinateSystem(int coordinateSystemSize, CSPoint[] point, CSLineSegment[] LinePoints) {
+        if (coordinateSystemSize < 0 || coordinateSystemSize % 20 != 0) {
             throw new IllegalArgumentException();
         }
-        this.Coordinatesystemsize = coordinatesystemsize;
+        this.CoordinateSystemSize = coordinateSystemSize;
         this.allPoints = point;
-
+        this.allLinePoints = LinePoints;
     }
 
-    public int getCoordinatesystemsize() {
-        return Coordinatesystemsize;
+    public CoordinateSystem(int size) {
+        this.CoordinateSystemSize = size;
     }
 
-    public void setCoordinatesystemsize(int coordinatesystemsize) {
-        Coordinatesystemsize = coordinatesystemsize;
+    public int getCoordinateSystemSize() {
+        return CoordinateSystemSize;
+    }
+
+    public void setCoordinateSystemSize(int coordinateSystemSize) {
+        CoordinateSystemSize = coordinateSystemSize;
     }
 
     public CSPoint[] getAllPoints() {
@@ -27,5 +36,21 @@ public class CoordinateSystem {
 
     public void setAllPoints(CSPoint[] allPoints) {
         this.allPoints = allPoints;
+    }
+
+    public CSLineSegment[] getAllLinePoints() {
+        return allLinePoints;
+    }
+
+    public void setAllLinePoints(CSLineSegment[] allLinePoints) {
+        this.allLinePoints = allLinePoints;
+    }
+
+    public ArrayList<CSLineSegment> getLines() {
+        return lines;
+    }
+
+    public void setLines(ArrayList<CSLineSegment> lines) {
+        this.lines = lines;
     }
 }

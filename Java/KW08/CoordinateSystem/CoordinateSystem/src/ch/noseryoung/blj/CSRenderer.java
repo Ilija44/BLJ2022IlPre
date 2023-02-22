@@ -16,8 +16,7 @@ import javax.swing.JPanel;
  * This class is responsible for visualising a given coordinate system in a
  * halfway pleasing way.
  *
- * @author surber
- *
+ * @author Predolac
  */
 public class CSRenderer extends JPanel {
 
@@ -111,7 +110,17 @@ public class CSRenderer extends JPanel {
             CSPoint translatedPoint = translatePoint(point);
             g2d.setColor(Color.BLUE);
             g2d.drawLine(translatedPoint.x, translatedPoint.y, translatedPoint.x, translatedPoint.y);
+
         }
+
+        // all lines
+        for (CSLineSegment line : cs.getAllLinePoints()) {
+            CSPoint startpoint = translatePoint(line.getStartPoint());
+            CSPoint endpoint = translatePoint(line.getEndPoint());
+            g2d.setColor(Color.BLUE);
+            g2d.drawLine(startpoint.x, startpoint.y, endpoint.x, endpoint.y);
+        }
+
     }
 
     /**
