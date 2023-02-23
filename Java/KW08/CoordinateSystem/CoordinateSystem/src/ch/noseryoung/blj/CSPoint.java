@@ -2,7 +2,7 @@ package ch.noseryoung.blj;
 
 import java.awt.*;
 
-public class CSPoint extends Point {
+public class CSPoint extends Point implements Shape {
     private static int counter = 0;
     private int idPoint;
 
@@ -30,6 +30,14 @@ public class CSPoint extends Point {
 
     public void setIdPoint(int idPoint) {
         this.idPoint = idPoint;
+    }
+
+    @Override
+    public void draw(Graphics2D g2d, CoordinateSystem cs, int fieldScale) {
+        CSPoint translatedPoint = translatePoint(cs, fieldScale, this.x, this.y);
+            g2d.setColor(Color.BLUE);
+            g2d.drawLine(translatedPoint.x, translatedPoint.y, translatedPoint.x, translatedPoint.y);
+
     }
 
 }

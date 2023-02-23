@@ -4,18 +4,22 @@ import java.util.ArrayList;
 
 public class CoordinateSystem {
     private int CoordinateSystemSize;
-    private CSPoint[] allPoints;
-    private CSLineSegment[] allLinePoints;
+
+
+    private Shape[] allShapes;
     private ArrayList<CSLineSegment> lines = new ArrayList<>();
 
 
-    public CoordinateSystem(int coordinateSystemSize, CSPoint[] point, CSLineSegment[] LinePoints) {
+    public CoordinateSystem(int coordinateSystemSize, Shape[] shapes) {
         if (coordinateSystemSize < 0 || coordinateSystemSize % 20 != 0) {
             throw new IllegalArgumentException();
         }
         this.CoordinateSystemSize = coordinateSystemSize;
-        this.allPoints = point;
-        this.allLinePoints = LinePoints;
+        this.allShapes = shapes;
+    }
+
+    public Shape[] getAllShapes() {
+        return allShapes;
     }
 
     public CoordinateSystem(int size) {
@@ -28,22 +32,6 @@ public class CoordinateSystem {
 
     public void setCoordinateSystemSize(int coordinateSystemSize) {
         CoordinateSystemSize = coordinateSystemSize;
-    }
-
-    public CSPoint[] getAllPoints() {
-        return allPoints;
-    }
-
-    public void setAllPoints(CSPoint[] allPoints) {
-        this.allPoints = allPoints;
-    }
-
-    public CSLineSegment[] getAllLinePoints() {
-        return allLinePoints;
-    }
-
-    public void setAllLinePoints(CSLineSegment[] allLinePoints) {
-        this.allLinePoints = allLinePoints;
     }
 
     public ArrayList<CSLineSegment> getLines() {

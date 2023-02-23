@@ -1,9 +1,10 @@
 package ch.noseryoung.blj;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
-public class CSLineSegment extends JPanel {
+public class CSLineSegment extends JPanel implements Shape{
 
     private CSPoint startPoint;
     private CSPoint endPoint;
@@ -13,19 +14,13 @@ public class CSLineSegment extends JPanel {
         this.endPoint = endPoint;
     }
 
-    public CSPoint getStartPoint() {
-        return startPoint;
-    }
 
-    public void setStartPoint(CSPoint startPoint) {
-        this.startPoint = startPoint;
-    }
 
-    public CSPoint getEndPoint() {
-        return endPoint;
-    }
-
-    public void setEndPoint(CSPoint endPoint) {
-        this.endPoint = endPoint;
+    @Override
+    public void draw(Graphics2D g2d, CoordinateSystem cs, int fieldScale) {
+        CSPoint startpoint = translatePoint(cs, fieldScale, this.startPoint.x, this.startPoint.y);
+        CSPoint endpoint = translatePoint(cs, fieldScale, this.endPoint.x, this.endPoint.y);
+        g2d.setColor(Color.BLUE);
+        g2d.drawLine(startpoint.x, startpoint.y, endpoint.x, endpoint.y);
     }
 }

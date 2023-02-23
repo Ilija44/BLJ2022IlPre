@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * This class is responsible for visualising a given coordinate system in a
  * halfway pleasing way.
  *
- * @author Predolac
+ * @author Surber
  */
 public class CSRenderer extends JPanel {
 
@@ -49,7 +49,6 @@ public class CSRenderer extends JPanel {
         OFFSET_END = size + (fieldScale / 2);
 
         this.setPreferredSize(new Dimension(size + fieldScale, size + fieldScale));
-        this.setupMouseMotionListener(2);
 
         mainFrame = new JFrame();
         mainFrame.setResizable(true);
@@ -70,6 +69,7 @@ public class CSRenderer extends JPanel {
      * @param cs The coordinate system (including all points) to draw.
      */
     public CSRenderer(CoordinateSystem cs) {
+
         this(cs, 1, 3);
     }
 
@@ -106,21 +106,9 @@ public class CSRenderer extends JPanel {
 
         // all points
         g2d.setStroke(new BasicStroke(pointSize));
-        for (CSPoint point : cs.getAllPoints()) {
-            CSPoint translatedPoint = translatePoint(point);
-            g2d.setColor(Color.BLUE);
-            g2d.drawLine(translatedPoint.x, translatedPoint.y, translatedPoint.x, translatedPoint.y);
-
+        for (Shape s : cs.getAllShapes()) {
+            s.draw(g2d, cs, fieldScale);
         }
-
-        // all lines
-        for (CSLineSegment line : cs.getAllLinePoints()) {
-            CSPoint startpoint = translatePoint(line.getStartPoint());
-            CSPoint endpoint = translatePoint(line.getEndPoint());
-            g2d.setColor(Color.BLUE);
-            g2d.drawLine(startpoint.x, startpoint.y, endpoint.x, endpoint.y);
-        }
-
     }
 
     /**
@@ -139,24 +127,9 @@ public class CSRenderer extends JPanel {
      * This method sets up the mouse motion listener, which gets called every time
      * the mouse was moved inside the window containing the drawn coordinate system.
      *
-     * @param leeway The deviation that is allowed to exist between the mouse
+     * @param cs The deviation that is allowed to exist between the mouse
      *               coordinate and the coordinate of a drawn point. A leeway of 0
      *               means that the both coordinates must be an exact match.
      */
-    private void setupMouseMotionListener(int leeway) {
-        int scaledLeeway = leeway + pointSize / 2;
-        this.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent me) {
-                for (CSPoint point : cs.getAllPoints()) {
-                    CSPoint tp = translatePoint(point);
 
-                    if ((me.getPoint().x >= tp.x - scaledLeeway && me.getPoint().x <= tp.x + scaledLeeway)
-                            && (me.getPoint().y >= tp.y - scaledLeeway && me.getPoint().y <= tp.y + scaledLeeway)) {
-                        mainFrame.setTitle(point.toString());
-                    }
-                }
-            }
-        });
-    }
 }
