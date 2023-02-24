@@ -7,26 +7,23 @@ public class Contract {
     private Vehicle vehicle;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String contractModalities;
 
-    public Contract(Person person, Vehicle vehicle, LocalDate startDate, LocalDate endDate, String contractModalities) throws MinorAgeException, LeaseLengthCollisionException, DenylistedPersonException {
-        if (!vehicle.isAllowedToRent(person)) {
-            throw new MinorAgeException("Person is too young to rent this vehicle");
-        }
+    private String text;
 
-        if (VehicleRentalManager.checkLeaseCollision(startDate)) {
-            throw new LeaseLengthCollisionException("Rental period overlaps with an existing contract");
-        }
-        if (VehicleRentalManager.isDenylisted()) {
-            throw new DenylistedPersonException("Person is on the denylist");
-        }
-
+    public Contract(LocalDate startDate, LocalDate endDate, String text, Person person, Vehicle vehicle) {
         this.person = person;
         this.vehicle = vehicle;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.contractModalities = contractModalities;
+        this.text = text;
+    }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Person getPerson() {
@@ -61,15 +58,4 @@ public class Contract {
         this.endDate = endDate;
     }
 
-    public String getContractModalities() {
-        return contractModalities;
-    }
-
-    public void setContractModalities(String contractModalities) {
-        this.contractModalities = contractModalities;
-    }
-
-    public Object getContractDetails() {
-        return null;
-    }
 }

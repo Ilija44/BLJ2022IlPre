@@ -1,14 +1,11 @@
 package ch.noseryoung.blj;
 
 import java.time.LocalDate;
-
-
 public class Person {
 
     String firstName;
     String lastName;
     LocalDate birthYear;
-
 
     Person(String firstName, String lastName, LocalDate birthYear) {
 
@@ -44,5 +41,9 @@ public class Person {
 
     public boolean getFullName() {
         return false;
+    }
+
+    public LocalDate getBirthDate() {
+        return null;
     }
 }

@@ -27,7 +27,6 @@ public class Vehicle {
         this.name = name;
     }
 
-
     public int getMaxGeschwindigkeit() {
         return maxGeschwindigkeit;
     }
@@ -35,7 +34,6 @@ public class Vehicle {
     public void setMaxGeschwindigkeit(int maxGeschwindigkeit) {
         this.maxGeschwindigkeit = maxGeschwindigkeit;
     }
-
 
     public int getJahrgang() {
         return jahrgang;
@@ -67,9 +65,5 @@ public class Vehicle {
 
     public void setPersonenkapazität(int personenkapazität) {
         this.personenkapazität = personenkapazität;
-    }
-
-    public boolean isAllowedToRent(Person person) {
-        return false;
     }
 }
