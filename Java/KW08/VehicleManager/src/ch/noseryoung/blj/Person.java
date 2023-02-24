@@ -41,4 +41,8 @@ public class Person {
     public void setBirthYear(LocalDate birthYear) {
         this.birthYear = birthYear;
     }
+
+    public boolean getFullName() {
+        return false;
+    }
 }
