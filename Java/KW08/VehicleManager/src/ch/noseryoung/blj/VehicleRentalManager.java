@@ -31,7 +31,7 @@ public class VehicleRentalManager {
         LocalDate currentDate = LocalDate.now();
         int age = Period.between(person.getBirthYear(), currentDate).getYears();
 
-        if (age < 18) {
+        if (age < vehicle.getAgeRestriction()) {
             throw new MinorAgeException();
         }
         if (denyList.contains(person)) {
@@ -51,9 +51,10 @@ public class VehicleRentalManager {
         denyList.add(personToDeny);
     }
 
-    public void createVehicle(String name, int maxGeschwindigkeit, int jahrgang, int serienNummer, int price, int personenkapazität) {
+    public void createVehicle(String name, int maxGeschwindigkeit, int jahrgang, int serienNummer, int price, int personenkapazität, int ageRestriction) {
 
-        vehicles.add(new Vehicle(name, maxGeschwindigkeit, jahrgang, serienNummer, price, personenkapazität));
+
+        vehicles.add(new Vehicle(name, maxGeschwindigkeit, jahrgang, serienNummer, price, personenkapazität, ageRestriction));
     }
 
 
@@ -88,5 +89,6 @@ public class VehicleRentalManager {
     public void setContracts(ArrayList<Contract> contracts) {
         this.contracts = contracts;
     }
+
 
 }

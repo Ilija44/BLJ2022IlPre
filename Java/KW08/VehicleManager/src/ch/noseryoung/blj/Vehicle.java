@@ -2,53 +2,56 @@ package ch.noseryoung.blj;
 
 public class Vehicle {
 
-    private String name;
+    private String model;
 
-    private int maxGeschwindigkeit;
-    private int jahrgang;
-    private int serienNummer;
+    private int maxSpeed;
+    private int year;
+    private int serialNumber;
     private int price;
-    private int personenkapazität;
+    private int personCapacity;
 
-    public Vehicle(String name, int maxGeschwindigkeit, int jahrgang, int serienNummer, int price, int personenkapazität) {
-        this.name = name;
-        this.maxGeschwindigkeit = maxGeschwindigkeit;
-        this.jahrgang = jahrgang;
-        this.serienNummer = serienNummer;
+    private int ageRestriction;
+
+    public Vehicle(String model, int maxSpeed, int year, int serialNumber, int price, int personCapacity, int ageRestriction) {
+        this.model = model;
+        this.maxSpeed = maxSpeed;
+        this.year = year;
+        this.serialNumber = serialNumber;
         this.price = price;
-        this.personenkapazität = personenkapazität;
+        this.personCapacity = personCapacity;
+        this.ageRestriction = ageRestriction;
     }
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public int getMaxGeschwindigkeit() {
-        return maxGeschwindigkeit;
+    public int getMaxSpeed() {
+        return maxSpeed;
     }
 
-    public void setMaxGeschwindigkeit(int maxGeschwindigkeit) {
-        this.maxGeschwindigkeit = maxGeschwindigkeit;
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
     }
 
-    public int getJahrgang() {
-        return jahrgang;
+    public int getYear() {
+        return year;
     }
 
-    public void setJahrgang(int jahrgang) {
-        this.jahrgang = jahrgang;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    public int getSerienNummer() {
-        return serienNummer;
+    public int getSerialNumber() {
+        return serialNumber;
     }
 
-    public void setSerienNummer(int serienNummer) {
-        this.serienNummer = serienNummer;
+    public void setSerialNumber(int serialNumber) {
+        this.serialNumber = serialNumber;
     }
 
     public int getPrice() {
@@ -59,11 +62,19 @@ public class Vehicle {
         this.price = price;
     }
 
-    public int getPersonenkapazität() {
-        return personenkapazität;
+    public int getPersonCapacity() {
+        return personCapacity;
     }
 
-    public void setPersonenkapazität(int personenkapazität) {
-        this.personenkapazität = personenkapazität;
+    public void setPersonCapacity(int personCapacity) {
+        this.personCapacity = personCapacity;
+    }
+
+    public int getAgeRestriction() {
+        return ageRestriction;
+    }
+
+    public void setAgeRestriction(int ageRestriction) {
+        this.ageRestriction = ageRestriction;
     }
 }
