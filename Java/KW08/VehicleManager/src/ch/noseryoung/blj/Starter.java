@@ -3,6 +3,7 @@ package ch.noseryoung.blj;
 import Exceptions.DenylistedPersonException;
 import Exceptions.LeaseLengthCollisionException;
 import Exceptions.MinorAgeException;
+
 import java.time.LocalDate;
 
 public class Starter {
@@ -19,9 +20,6 @@ public class Starter {
         rentalManager.createContract(LocalDate.of(2020, 11, 21), LocalDate.of(2020, 11, 23), "h", person1, car1);
         rentalManager.createContract(LocalDate.of(2020, 11, 22), LocalDate.of(2020, 12, 22), "h", person2, car2);
 
-        /**
-         @author Noah
-         */
     }
 }
 

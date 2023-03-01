@@ -37,9 +37,9 @@ public class VehicleRentalManager {
         if (denyList.contains(person)) {
             throw new DenylistedPersonException();
         }
-        for (int i = 0; i < contracts.size(); i++) {
-            if ((Period.between(startDate, contracts.get(i).getStartDate()).getDays() <= 0 || Period.between(endDate,
-                    contracts.get(i).getStartDate()).getDays() <= 0) && con.getVehicle().equals(contracts.get(i).getVehicle())) {
+        for (Contract contract : contracts) {
+            if ((Period.between(startDate, contract.getStartDate()).getDays() <= 0 || Period.between(endDate,
+                    contract.getStartDate()).getDays() <= 0) && con.getVehicle().equals(contract.getVehicle())) {
 
                 throw new LeaseLengthCollisionException();
             }
