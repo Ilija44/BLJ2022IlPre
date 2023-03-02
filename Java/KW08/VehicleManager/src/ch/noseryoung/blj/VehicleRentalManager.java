@@ -19,9 +19,6 @@ public class VehicleRentalManager {
     private ArrayList<Contract> contracts = new ArrayList<>();
 
 
-    public VehicleRentalManager() {
-
-    }
     public void createContract(LocalDate startDate, LocalDate endDate, String text, Person person, Vehicle vehicle)
             throws MinorAgeException, DenylistedPersonException, LeaseLengthCollisionException {
 
