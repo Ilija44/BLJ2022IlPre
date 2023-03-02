@@ -60,6 +60,7 @@ public class Starter {
                 vehicleList.add(vehicle);
                 rentalManager.setVehicles(vehicleList);
                 System.out.println("The Vehicle " + vehicle.getModel() + " is added to the list");
+
             } else if (input == 3) {
                 if (personList.isEmpty()) {
                     System.out.println("A person is missing to do a contract");
@@ -75,16 +76,26 @@ public class Starter {
                     System.out.println("General remark: ");
                     String text = scanner.next();
 
-                    ArrayList<>
-                    rentalManager.createContract();
+                    System.out.println("Select a person from the list to rent the vehicle:");
+                    for (int i = 0; i < personList.size(); i++) {
+                        System.out.println(i + " - " + personList.get(i).getFirstName() + " " + personList.get(i).getLastName());
+                    }
+                    int personIndex = scanner.nextInt();
+                    Person customer = personList.get(personIndex);
 
+                    System.out.println("Select a vehicle from the list to rent:");
+                    for (int i = 0; i < vehicleList.size(); i++) {
+                        System.out.println(i + " - " + vehicleList.get(i).getModel());
+                    }
+                    int vehicleIndex = scanner.nextInt();
+                    Vehicle rentedVehicle = vehicleList.get(vehicleIndex);
+
+                    rentalManager.createContract(startDate, endDate, text, customer, rentedVehicle);
                 }
             } else {
                 System.out.println("Invalid input");
             }
         } while (true);
-
-        //rentalManager.createContract(LocalDate.of(2020, 11, 22), LocalDate.of(2020, 12, 22), "Bemerkung", person2, car1);
     }
 }
 

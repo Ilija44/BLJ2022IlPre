@@ -1,7 +1,6 @@
 package ch.noseryoung.blj;
 
 public class Vehicle {
-
     private String model;
 
     private int maxSpeed;
@@ -9,7 +8,6 @@ public class Vehicle {
     private int serialNumber;
     private int price;
     private int personCapacity;
-
     private int ageRestriction;
 
     public Vehicle(String model, int maxSpeed, int year, int serialNumber, int price, int personCapacity, int ageRestriction) {

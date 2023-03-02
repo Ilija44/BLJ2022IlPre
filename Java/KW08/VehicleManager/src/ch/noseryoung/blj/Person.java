@@ -3,13 +3,11 @@ package ch.noseryoung.blj;
 import java.time.LocalDate;
 
 public class Person {
-
     String firstName;
     String lastName;
     LocalDate birthYear;
 
     Person(String firstName, String lastName, LocalDate birthYear) {
-
 
         this.firstName = firstName;
         this.lastName = lastName;

@@ -22,7 +22,6 @@ public class VehicleRentalManager {
     public VehicleRentalManager() {
 
     }
-
     public void createContract(LocalDate startDate, LocalDate endDate, String text, Person person, Vehicle vehicle)
             throws MinorAgeException, DenylistedPersonException, LeaseLengthCollisionException {
 
@@ -56,7 +55,6 @@ public class VehicleRentalManager {
 
         vehicles.add(new Vehicle(name, maxGeschwindigkeit, jahrgang, serienNummer, price, personenkapazität, ageRestriction));
     }
-
 
     public ArrayList<Person> getCustomerList() {
         return customerList;
