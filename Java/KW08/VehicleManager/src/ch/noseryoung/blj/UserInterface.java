@@ -10,15 +10,16 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    public void UserInput( ArrayList<Person> personList,  ArrayList<Vehicle> vehicleList,  VehicleRentalManager rentalManager) throws MinorAgeException, DenylistedPersonException, LeaseLengthCollisionException {
+    public void UserInput(ArrayList<Person> personList, ArrayList<Vehicle> vehicleList, VehicleRentalManager rentalManager) {
         do {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Verhicle Rental Manager");
-            System.out.println("************************");
+            System.out.println("Vehicle Rental Manager");
+            System.out.println("*****************************");
             System.out.println("1 = new Person");
             System.out.println("2 = new vehicle");
             System.out.println("3 = new contract");
-            System.out.println("************************");
+            System.out.println("4 = add person to deny list");
+            System.out.println("*****************************");
 
             int input = scanner.nextInt();
 
@@ -88,8 +89,25 @@ public class UserInterface {
                     int vehicleIndex = scanner.nextInt();
                     Vehicle rentedVehicle = vehicleList.get(vehicleIndex);
 
-                    rentalManager.createContract(startDate, endDate, text, customer, rentedVehicle);
+                    try {
+                        rentalManager.createContract(startDate, endDate, text, customer, rentedVehicle);
+                    } catch (MinorAgeException e) {
+                        System.out.println("The age restriction of this vehicle is too high for the age of the person.");
+                    } catch (DenylistedPersonException e) {
+                        System.out.println("This person is on the denylist ");
+                    } catch (LeaseLengthCollisionException e) {
+                        System.out.println("Another person rents the vehicle at this time.");
+                    }
                 }
+            } else if (input == 4) {
+                System.out.println("Which person do you want to put on the denylist?");
+                for (int i = 0; i < personList.size(); i++) {
+                    System.out.println(i + " - " + personList.get(i).getFirstName() + " " + personList.get(i).getLastName());
+                }
+                int personIndex = scanner.nextInt();
+                Person customer = personList.get(personIndex);
+                rentalManager.addPersonToDenyList(customer);
+
             } else {
                 System.out.println("Invalid input");
             }
