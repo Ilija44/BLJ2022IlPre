@@ -10,18 +10,21 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    public void UserInput(ArrayList<Person> personList, ArrayList<Vehicle> vehicleList, VehicleRentalManager rentalManager) {
+    public void UserInputHandler(ArrayList<Person> personList, ArrayList<Vehicle> vehicleList, VehicleRentalManager rentalManager) {
+        int input = 0;
         do {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Vehicle Rental Manager");
             System.out.println("*****************************");
-            System.out.println("1 = new Person");
-            System.out.println("2 = new vehicle");
-            System.out.println("3 = new contract");
-            System.out.println("4 = add person to deny list");
+            System.out.println("   Vehicle Rental Manager    ");
+            System.out.println("*****************************");
+            System.out.println("1 - New Person");
+            System.out.println("2 - New vehicle");
+            System.out.println("3 - New contract");
+            System.out.println("4 - Add person to deny list");
+            System.out.println("5 - Quit");
             System.out.println("*****************************");
 
-            int input = scanner.nextInt();
+            input = scanner.nextInt();
 
             if (input == 1) {
                 System.out.println("firstname:");
@@ -74,6 +77,7 @@ public class UserInterface {
                     LocalDate endDate = LocalDate.parse(endDateString);
                     System.out.println("General remark: ");
                     String text = scanner.next();
+                    scanner.nextLine();
 
                     System.out.println("Select a person from the list to rent the vehicle:");
                     for (int i = 0; i < personList.size(); i++) {
@@ -100,17 +104,21 @@ public class UserInterface {
                     }
                 }
             } else if (input == 4) {
-                System.out.println("Which person do you want to put on the denylist?");
-                for (int i = 0; i < personList.size(); i++) {
-                    System.out.println(i + " - " + personList.get(i).getFirstName() + " " + personList.get(i).getLastName());
+                if (personList.isEmpty()) {
+                    System.out.println("A person is missing to put on the denylist");
+                } else {
+                    System.out.println("Which person do you want to put on the denylist?");
+                    for (int i = 0; i < personList.size(); i++) {
+                        System.out.println(i + " - " + personList.get(i).getFirstName() + " " + personList.get(i).getLastName());
+                    }
+                    int personIndex = scanner.nextInt();
+                    Person customer = personList.get(personIndex);
+                    rentalManager.addPersonToDenyList(customer);
                 }
-                int personIndex = scanner.nextInt();
-                Person customer = personList.get(personIndex);
-                rentalManager.addPersonToDenyList(customer);
-
-            } else {
+            }
+            if (input != 5) {
                 System.out.println("Invalid input");
             }
-        } while (true);
+        } while (input != 5);
     }
 }

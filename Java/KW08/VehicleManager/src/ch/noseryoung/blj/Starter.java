@@ -10,7 +10,7 @@ public class Starter {
         ArrayList<Vehicle> vehicleList = new ArrayList<>();
 
         UserInterface userInterface = new UserInterface();
-        userInterface.UserInput(personList, vehicleList, rentalManager);
+        userInterface.UserInputHandler(personList, vehicleList, rentalManager);
     }
 }
 

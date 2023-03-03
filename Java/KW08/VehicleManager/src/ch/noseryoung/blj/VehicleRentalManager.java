@@ -43,16 +43,6 @@ public class VehicleRentalManager {
         contracts.add(con);
     }
 
-    public void addPersonToDenyList(Person personToDeny) {
-        denyList.add(personToDeny);
-    }
-
-    public void createVehicle(String name, int maxGeschwindigkeit, int jahrgang, int serienNummer, int price, int personenkapazität, int ageRestriction) {
-
-
-        vehicles.add(new Vehicle(name, maxGeschwindigkeit, jahrgang, serienNummer, price, personenkapazität, ageRestriction));
-    }
-
     public ArrayList<Person> getCustomerList() {
         return customerList;
     }
@@ -85,5 +75,6 @@ public class VehicleRentalManager {
         this.contracts = contracts;
     }
 
-
+    public void addPersonToDenyList(Person customer) {
+    }
 }
