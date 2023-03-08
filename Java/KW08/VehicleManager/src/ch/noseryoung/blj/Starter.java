@@ -1,6 +1,5 @@
 package ch.noseryoung.blj;
 
-
 import java.util.ArrayList;
 
 public class Starter {
