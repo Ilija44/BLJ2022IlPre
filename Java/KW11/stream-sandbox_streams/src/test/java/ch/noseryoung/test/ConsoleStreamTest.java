@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ch.noseryoung.main.NintendoConsoles.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,10 +38,10 @@ public class ConsoleStreamTest {
      */
     @Test
     public void test_GetString_Played() {
-        String Consolename = "";
-        for(int i = 0; i < ALL_CONSOLES.size(); i++) {
-            Consolename = Consolename + "I have played on a " + ALL_CONSOLES.get(i).getName() + (i < ALL_CONSOLES.size() - 1 ? "!\n" : "!");
-        }
+        String Consolename = ALL_CONSOLES.stream()
+            .map(console -> "I have played on a " + console.getName() + "!")
+                .collect(Collectors.joining("\n"));
+
         String PLAYED_STRINGS = """
                 I have played on a Color TV-Game!
                 I have played on a Nintendo Entertainment System!
@@ -114,12 +115,10 @@ public class ConsoleStreamTest {
      */
     @Test
     public void test_GetAllConsoles_HaveMarioGameAsBestSeller() {
-        List<GameConsole> actual = new ArrayList<>();
-        for (int i = 0; i < ALL_CONSOLES.size(); i++) {
-            if(ALL_CONSOLES.get(i).getBestSellingGame().contains("Mario")){
-                actual.add(ALL_CONSOLES.get(i));
-            }
-        }
+        List<GameConsole> actual = ALL_CONSOLES.stream()
+                .filter(gameConsole -> gameConsole.getBestSellingGame().contains("Mario"))
+                .collect(Collectors.toList());
+
         assertArrayEquals(new GameConsole[]{NES, SNES, N64, WII_U, SWITCH, NDS, N3DS, N_N3DS}, actual.toArray());
      }
 
