@@ -2,6 +2,7 @@ package ch.noseryoung.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class GameConsole {
@@ -65,4 +66,5 @@ public class GameConsole {
                 + "\n  \"unitsSoldWorldwide\": " + unitsSoldWorldwide + "," + "\n  \"initialRelease\": \""
                 + initialRelease + "\"," + "\n  \"bestSellingGame\": \"" + bestSellingGame + "\"" + "\n}";
     }
+
 }

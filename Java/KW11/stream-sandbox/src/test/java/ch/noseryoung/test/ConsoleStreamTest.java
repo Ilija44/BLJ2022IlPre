@@ -3,10 +3,8 @@ package ch.noseryoung.test;
 import ch.noseryoung.main.GameConsole;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static ch.noseryoung.main.NintendoConsoles.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,7 +37,10 @@ public class ConsoleStreamTest {
      */
     @Test
     public void test_GetString_Played() {
-        String actual = "";
+        String Consolename = "";
+        for(int i = 0; i < ALL_CONSOLES.size(); i++) {
+            Consolename = Consolename + "I have played on a " + ALL_CONSOLES.get(i).getName() + (i < ALL_CONSOLES.size() - 1 ? "!\n" : "!");
+        }
         String PLAYED_STRINGS = """
                 I have played on a Color TV-Game!
                 I have played on a Nintendo Entertainment System!
@@ -57,7 +58,7 @@ public class ConsoleStreamTest {
                 I have played on a Nintendo DS!
                 I have played on a Nintendo 3DS!
                 I have played on a New Nintendo 3DS!""";
-        assertEquals(PLAYED_STRINGS, actual);
+        assertEquals(PLAYED_STRINGS, Consolename);
     }
 
     /**
@@ -113,9 +114,15 @@ public class ConsoleStreamTest {
      */
     @Test
     public void test_GetAllConsoles_HaveMarioGameAsBestSeller() {
-        List<GameConsole> actual = ALL_CONSOLES.stream().toList();
+        List<GameConsole> actual = new ArrayList<>();
+        for (int i = 0; i < ALL_CONSOLES.size(); i++) {
+            if(ALL_CONSOLES.get(i).getBestSellingGame().contains("Mario")){
+                actual.add(ALL_CONSOLES.get(i));
+            }
+        }
         assertArrayEquals(new GameConsole[]{NES, SNES, N64, WII_U, SWITCH, NDS, N3DS, N_N3DS}, actual.toArray());
-    }
+     }
+
 
     /**
      * Test:        Get String containing the best selling game of the best selling console.
@@ -144,6 +151,8 @@ public class ConsoleStreamTest {
     @Test
     public void test_GetBoolean_ConsoleExistsLessThanMillionSold() {
         boolean actual = false;
+        for(GameConsole ac : ALL_CONSOLES){
+        }
         assertTrue(actual);
     }
 
@@ -215,6 +224,7 @@ public class ConsoleStreamTest {
     public void test_GetHomeConsole_LatestGeneration() {
         GameConsole actual = null;
         assertEquals(WII_U, actual);
+        int gen = HOME_CONSOLES.get(0).getGeneration();
     }
 
     /**
