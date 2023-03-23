@@ -1,9 +1,10 @@
 package org.example;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Comparator;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private int pages;
 
@@ -51,5 +52,18 @@ public class Book {
 
     public void setRealeaseDate(LocalDate realeaseDate) {
         RealeaseDate = realeaseDate;
+    }
+
+    @Override
+    public int compareTo(Book other) {
+        int titleComparison = title.compareTo(other.title);
+        if (titleComparison != 0) {
+            return titleComparison;
+        }
+        int releaseDateComparison = RealeaseDate.compareTo(other.RealeaseDate);
+        if (releaseDateComparison != 0) {
+            return releaseDateComparison;
+        }
+        return Integer.compare(pages, other.pages);
     }
 }
