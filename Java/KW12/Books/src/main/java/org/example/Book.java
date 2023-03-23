@@ -27,6 +27,8 @@ public class Book {
 
         System.out.println(info);
     }
+
+
     public int getPages() {
         return pages;
     }

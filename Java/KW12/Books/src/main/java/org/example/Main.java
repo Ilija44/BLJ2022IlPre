@@ -16,9 +16,10 @@ public class Main {
         books.add(Book1);
         books.add(Book2);
         books.add(Book3);
-        Book.sort(Comparator.comparing(Book::getPages));
-        Book.sort(Comparator.comparing(Book::getRealeaseDate));
-        Book.sort(Comparator.comparing(Book::getTitle));
+
+        books.sort(Comparator.comparing(Book::getPages));
+        books.sort(Comparator.comparing(Book::getRealeaseDate));
+        books.sort(Comparator.comparing(Book::getTitle));
         for (Book book : books) {
             book.printInfo();
 
