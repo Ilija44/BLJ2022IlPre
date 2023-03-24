@@ -8,9 +8,10 @@ public class Starter {
     TriangleManager sm = new TriangleManager(creatorService);
     sm.run();
 
-    // todo: print all sorted Triangles
-    // sm.getAllTrianglesSortedByLongestSide();
-    // ... = sm.getAllTrianglesSortedByLongestSide();
 
+    System.out.println("All triangles sorted by longest side:");
+    for (Triangle triangle : sm.getAllTrianglesSortedByLongestSide()) {
+      System.out.println(triangle);
+    }
   }
 }

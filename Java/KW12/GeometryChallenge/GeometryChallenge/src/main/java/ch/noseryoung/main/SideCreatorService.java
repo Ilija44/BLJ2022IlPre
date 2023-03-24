@@ -1,15 +1,19 @@
 package ch.noseryoung.main;
 
-public class SideCreatorService implements ShapeSideCreator{
+import java.util.Random;
 
-  /**
-   * This method generates a random <code>double</code>, rounded to .0 or .5.
-   *
-   * @return the generated value, to be used as a side for a shape
-   */
-  @Override
-  public double createSide() {
-    //todo implement
-    return 0.0;
-  }
+public class SideCreatorService implements ShapeSideCreator {
+
+    /**
+     * This method generates a random <code>double</code>, rounded to .0 or .5.
+     *
+     * @return the generated value, to be used as a side for a shape
+     */
+    @Override
+    public double createSide() {
+        Random rand = new Random();
+        double num = rand.nextDouble() * 10;
+        num = Math.round(num * 2) / 2.0;
+        return num;
+    }
 }
