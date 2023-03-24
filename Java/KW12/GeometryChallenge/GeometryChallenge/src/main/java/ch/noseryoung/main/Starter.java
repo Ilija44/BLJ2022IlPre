@@ -9,7 +9,7 @@ public class Starter {
     sm.run();
 
     // todo: print all sorted Triangles
-    // ... = sm.getAllTrianglesSortedByLongestSide();
+    // sm.getAllTrianglesSortedByLongestSide();
     // ... = sm.getAllTrianglesSortedByLongestSide();
 
   }

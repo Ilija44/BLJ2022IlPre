@@ -37,4 +37,7 @@ public class TriangleValidator {
     return false;
   }
 
+  public boolean isValid(Triangle triangle) {
+    return false;
+  }
 }
