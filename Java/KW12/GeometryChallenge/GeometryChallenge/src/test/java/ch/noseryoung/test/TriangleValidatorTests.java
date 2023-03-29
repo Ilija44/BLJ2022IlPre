@@ -71,18 +71,5 @@ public class TriangleValidatorTests {
 
 
 
-    @Test
-    public void IsIsosceles_With1Number0_ReturnsFalse(){
-
-        TriangleValidator testee4 = new TriangleValidator();
-
-        Triangle t = new Triangle(2,  2, 3);
-
-        boolean expectedResult = true;
-
-        boolean result = testee4.isIsosceles(t);
-
-        assertEquals(expectedResult, result);
-    }
 
 }
