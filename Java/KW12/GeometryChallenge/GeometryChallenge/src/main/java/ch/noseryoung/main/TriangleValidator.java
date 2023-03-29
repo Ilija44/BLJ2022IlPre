@@ -59,4 +59,41 @@ public class TriangleValidator {
         double c = t.getC();
         return (a + b > c) && (b + c > a) && (c + a > b);
     }
+
+
+    public Boolean isNull(Triangle t){
+        double a = t.getA();
+        double b = t.getB();
+        double c = t.getC();
+        return (a == 0 || b == 0 || c == 0);
+    }
+
+    public Boolean isAllNull(Triangle t){
+        double a = t.getA();
+        double b = t.getB();
+        double c = t.getC();
+        return (a == 0 && b == 0 && c == 0);
+    }
+
+    public Boolean  OneSiteNegative(Triangle t){
+        double a = t.getA();
+        double b = t.getB();
+        double c = t.getC();
+        return (a < 0 || b < 0 || c < 0);
+    }
+    public Boolean  AllSiteNegative(Triangle t){
+        double a = t.getA();
+        double b = t.getB();
+        double c = t.getC();
+        return (a < 0 && b < 0 && c < 0);
+    }
+
+    public Boolean  isNotInt(Triangle t){
+        double a = t.getA();
+        double b = t.getB();
+        double c = t.getC();
+        return (a != Math.floor(a) || b != Math.floor(b) || c != Math.floor(c));
+    }
+
+
 }
