@@ -12,7 +12,7 @@ public class StringToCharSetTests {
         //GIVEN
         TypeConverter testee = new TypeConverter();
         String input = "Lewis";
-        char[] expectedResult = {'L', 'e', 'w', 'i', 's'};
+        char[] expectedResult = {'l', 'e', 'w', 'i', 's'};
         //WHEN
         Set<char> result = testee.StringToCharSet(input);
         //THEN
