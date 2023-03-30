@@ -101,8 +101,12 @@ public class TypeConverter {
     }
 
 
-    //public static Set<char> StringToCharSet(String toConvert) {
-    //todo implement
-    //     return new Hashset<char>();
-    //  }
+    public static Set<Character> StringToCharSet(String toConvert) {
+        Set<Character> charSet = new HashSet<>();
+        for (int i = 0; i < toConvert.length(); i++) {
+            char c = Character.toLowerCase(toConvert.charAt(i));
+            charSet.add(c);
+        }
+        return charSet;
+    }
 }
