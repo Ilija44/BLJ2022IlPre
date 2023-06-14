@@ -1,8 +1,11 @@
 package ch.noseryoung.blj;
 
-public class Game {
+import java.awt.*;
+import java.util.*;
 
+public class Game {
     private int[][] gameField;
+    private ArrayList<Point> activatedButtons = new ArrayList<>();
 
     public Game() {
         gameField = new int[][]{
@@ -13,7 +16,7 @@ public class Game {
                 {0, 1, 1, 1, 0, 3, 4, 1, 0, 0},
                 {0, 1, 4, 1, 1, 3, 0, 1, 0, 0},
                 {0, 1, 0, 1, 0, 4, 0, 1, 1, 0},
-                {0, 1, 3, 0, 3, 3, 3, 4, 1, 0},
+                {0, 1, 3, 0, 0, 3, 3, 4, 1, 0},
                 {0, 1, 0, 0, 0, 4, 0, 0, 1, 0},
                 {0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -21,87 +24,226 @@ public class Game {
     }
 
     public void moveUp() {
-        for (int i = 1; i < getRowCount() - 1; i++) {
-            for (int j = 1; j < getColCount() - 1; j++) {
-                if (getField()[i][j] == 2) {
-                    if (getField()[i - 1][j] == 0) {
-                        getField()[i][j] = 0;
-                        getField()[i - 1][j] = 2;
-                        System.out.println("UP");
-                        return;
-                    } else if (getField()[i - 1][j] == 3 && getField()[i - 2][j] == 0) {
-                        getField()[i][j] = 0;
-                        getField()[i - 1][j] = 2;
-                        getField()[i - 2][j] = 3;
-                        System.out.println("UP");
-                        return;
-                    }
-                }
-            }
+        moveUp(findPlayerPosition());
+        if (stopIfNo4()) {
+            System.out.println("Congratulations you are the Sokoban Champ!");
+            System.exit(0);
+
         }
+
     }
 
     public void moveDown() {
-        for (int i = getRowCount() - 2; i >= 1; i--) {
-            for (int j = 1; j < getColCount() - 1; j++) {
-                if (getField()[i][j] == 2 && getField()[i + 1][j] != 3 && getField()[i + 1][j] != 1) {
-                    getField()[i][j] = 0;
-                    getField()[i + 1][j] = 2;
-                    if (getField()[i][j] == 2 && getField()[i + 1][j] == 3 && getField()[i + 2][j] != 1) {
-                        getField()[i][j] = 0;
-                        getField()[i + 1][j] = 2;
-                        getField()[i + 2][j] = 3;
-                    }
-                }
-            }
+        moveDown(findPlayerPosition());
+        if (stopIfNo4()) {
+            System.out.println("Congratulations you are the Sokoban Champ!");
+            System.exit(0);
+
         }
-        System.out.println("DOWN");
     }
 
-
     public void moveLeft() {
-        for (int i = 1; i < getRowCount() - 1; i++) {
-            for (int j = 1; j < getColCount() - 1; j++) {
+        moveLeft(findPlayerPosition());
+        if (stopIfNo4()) {
+            System.out.println("Congratulations you are the Sokoban Champ!");
+            System.exit(0);
 
-                if (getField()[i][j] == 2 && getField()[i][j - 1] != 3 && getField()[i][j - 1] != 1) {
-                    getField()[i][j] = 0;
-                    getField()[i][j - 1] = 2;
-                    if (getField()[i][j] == 2 && getField()[i][j - 1] == 3 && getField()[i][j - 2] != 1) {
-                        getField()[i][j] = 0;
-                        getField()[i][j - 1] = 2;
-                        getField()[i][j - 2] = 3;
-                    }
-                }
-            }
-        }System.out.println("LEFT");
+        }
     }
 
     public void moveRight() {
-        for (int i = 1; i < getRowCount() - 1; i++) {
-            for (int j = 1; j < getColCount() - 1; j++) {
+        moveRight(findPlayerPosition());
+        if (stopIfNo4()) {
+            System.out.println("Congratulations you are the Sokoban Champ!");
+            System.exit(0);
 
-                if (getField()[i][j] == 2 && getField()[i][j + 1] != 3 && getField()[i][j + 1] != 1) {
-                    getField()[i][j] = 0;
-                    getField()[i][j + 1] = 2;
-                    if (getField()[i][j] == 2 && getField()[i][j + 1] == 3 && getField()[i][j + 2] != 1) {
-                        getField()[i][j] = 0;
-                        getField()[i][j + 1] = 2;
-                        getField()[i][j + 2] = 3;
-                    }
-                    System.out.println("RIGHT");
-                    return;
-                }
-            }
         }
     }
 
-    public void escAction() {
-        System.out.println("ESC");
+    //sl = start location
+    public boolean moveRight(Point sl) {
+        boolean isBox = gameField[sl.x][sl.y] == 3;
+        if (gameField[sl.x][sl.y + 1] == 0) {
+            gameField[sl.x][sl.y + 1] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        if (gameField[sl.x][sl.y + 1] == 1) {
+            return false;
+        }
+        if (isBox && (gameField[sl.x][sl.y + 1] == 3)) {
+            return false;
+        }
+        if (gameField[sl.x][sl.y + 1] == 3) {
+            if (moveRight(new Point(sl.x, sl.y + 1))) {
+                gameField[sl.x][sl.y + 1] = gameField[sl.x][sl.y];
+                if (activatedButtons.contains(sl)) {
+                    gameField[sl.x][sl.y] = 4;
+                } else {
+                    gameField[sl.x][sl.y] = 0;
+                }
+                return true;
+            }
+        }
+        if (gameField[sl.x][sl.y + 1] == 4) {
+            activatedButtons.add(new Point(sl.x, sl.y + 1));
+            gameField[sl.x][sl.y + 1] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+
+        return false;
     }
 
-    public int[][] getField() {
-        return gameField;
+    public boolean moveLeft(Point sl) {
+        boolean isBox = gameField[sl.x][sl.y] == 3;
+        if (gameField[sl.x][sl.y - 1] == 0) {
+            gameField[sl.x][sl.y - 1] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        if (gameField[sl.x][sl.y - 1] == 1) {
+            return false;
+        }
+        if (isBox && (gameField[sl.x][sl.y - 1] == 3)) {
+            return false;
+        }
+        if (gameField[sl.x][sl.y - 1] == 3) {
+            if (moveLeft(new Point(sl.x, sl.y - 1))) {
+                gameField[sl.x][sl.y - 1] = gameField[sl.x][sl.y];
+                if (activatedButtons.contains(sl)) {
+                    gameField[sl.x][sl.y] = 4;
+                } else {
+                    gameField[sl.x][sl.y] = 0;
+                }
+                return true;
+            }
+        }
+        if (gameField[sl.x][sl.y - 1] == 4) {
+            activatedButtons.add(new Point(sl.x, sl.y - 1));
+            gameField[sl.x][sl.y - 1] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        return false;
     }
+
+    public boolean moveUp(Point sl) {
+        boolean isBox = gameField[sl.x][sl.y] == 3;
+        if (gameField[sl.x - 1][sl.y] == 0) {
+            gameField[sl.x - 1][sl.y] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        if (gameField[sl.x - 1][sl.y] == 1) {
+            return false;
+        }
+        if (isBox && (gameField[sl.x - 1][sl.y] == 3)) {
+            return false;
+        }
+        if (gameField[sl.x - 1][sl.y] == 3) {
+            if (moveUp(new Point(sl.x - 1, sl.y))) {
+                gameField[sl.x - 1][sl.y] = gameField[sl.x][sl.y];
+                if (activatedButtons.contains(sl)) {
+                    gameField[sl.x][sl.y] = 4;
+                } else {
+                    gameField[sl.x][sl.y] = 0;
+                }
+                return true;
+            }
+        }
+        if (gameField[sl.x - 1][sl.y] == 4) {
+            activatedButtons.add(new Point(sl.x - 1, sl.y));
+            gameField[sl.x - 1][sl.y] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        System.out.println("UP");
+        return false;
+    }
+
+    public boolean moveDown(Point sl) {
+        boolean isBox = gameField[sl.x][sl.y] == 3;
+        if (gameField[sl.x + 1][sl.y] == 0) {
+            gameField[sl.x + 1][sl.y] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        if (gameField[sl.x + 1][sl.y] == 1) {
+            return false;
+        }
+        if (isBox && (gameField[sl.x + 1][sl.y] == 3)) {
+            return false;
+        }
+        if (gameField[sl.x + 1][sl.y] == 3) {
+            if (moveDown(new Point(sl.x + 1, sl.y))) {
+                gameField[sl.x + 1][sl.y] = gameField[sl.x][sl.y];
+                if (activatedButtons.contains(sl)) {
+                    gameField[sl.x][sl.y] = 4;
+                } else {
+                    gameField[sl.x][sl.y] = 0;
+                }
+                return true;
+            }
+        }
+        if (gameField[sl.x + 1][sl.y] == 4) {
+            activatedButtons.add(new Point(sl.x + 1, sl.y));
+            gameField[sl.x + 1][sl.y] = gameField[sl.x][sl.y];
+            if (activatedButtons.contains(sl)) {
+                gameField[sl.x][sl.y] = 4;
+            } else {
+                gameField[sl.x][sl.y] = 0;
+            }
+            return true;
+        }
+        System.out.println("UP");
+        return false;
+    }
+
+    public Point findPlayerPosition() throws IllegalStateException {
+        for (int i = 0; i < gameField.length; i++) {
+            for (int j = 0; j < gameField[0].length; j++) {
+                if (gameField[i][j] == 2) {
+                    return new Point(i, j);
+                }
+            }
+        }
+        throw new IllegalStateException("The player is in a illegal place");
+    }
+
+
+    public void escAction() {
+        Starter.StartProgram();
+    }
+
 
     public int getColCount() {
         return gameField.length;
@@ -110,4 +252,21 @@ public class Game {
     public int getRowCount() {
         return gameField[0].length;
     }
+
+    public int[][] getField() {
+        return gameField;
+    }
+
+    private boolean stopIfNo4() {
+        for (int i = 0; i < gameField.length; i++) {
+            for (int j = 0; j < gameField[0].length; j++) {
+                if (gameField[i][j] == 4) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
 }
