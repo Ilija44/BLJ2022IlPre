@@ -1,6 +1,5 @@
 package ch.noseryoung.blj;
 
-import java.sql.Time;
 
 public class QuizManager {
 

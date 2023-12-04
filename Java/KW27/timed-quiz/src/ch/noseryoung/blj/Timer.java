@@ -8,7 +8,7 @@ public class Timer extends Thread{
     @Override
     public void run(){
         try {
-            Thread.sleep(5000);
+            Thread.sleep(7000);
         } catch (InterruptedException e) {
         }
         if (!manager.isQuestionAnswered()){

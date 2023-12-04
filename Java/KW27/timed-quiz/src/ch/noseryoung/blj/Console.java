@@ -1,7 +1,5 @@
 package ch.noseryoung.blj;
 
-import ch.noseryoung.blj.InputController;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -74,7 +72,6 @@ public class Console {
         inputController = new InputController(this);
         inputField.addKeyListener(inputController);
     }
-
     public void start() {
         frame.setVisible(true);
     }
